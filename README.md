@@ -6,24 +6,24 @@ International Terrestrial Reference Frame (ITRF) Matlab Toolbox
 Coordinate transformations between different ITRS and ETRS89 realizations.
 --------------------------------------------------------------------------
 
-Synopsis:
+# Synopsis:
  
    crdvelout=itrf2itrf(crdvelin,from,to,yearin,yearout) 
    crdout=itrf2itrf(crdin,from,to,yearin) 
 
-Main functions:
+# Main functions:
  
-   itrf2itrf  - Transform coordinates/velocities between various ITRF's and
-                ETRF2000, ETRF2014 and ETRF2020.
-   pmmvel     - Get velocity from Plate Motion Model parameters.
+>   itrf2itrf  - Transform coordinates/velocities between various ITRF's and
+>                ETRF2000, ETRF2014 and ETRF2020.
+>   pmmvel     - Get velocity from Plate Motion Model parameters.
 
-Other functions:
+# Other functions:
 
-   itrftp     - Get ITRF transformation parameters at a certain epoch
-   itrftables - Print table with transformation parameters between ITRF's.
-   itrf2etrf  - Transform coordinates/velocities between ITRFyy and ETRFyy.
+>   itrftp     - Get ITRF transformation parameters at a certain epoch
+>   itrftables - Print table with transformation parameters between ITRF's.
+>   itrf2etrf  - Transform coordinates/velocities between ITRFyy and ETRFyy.
  
-Support functions:
+# Support functions:
 
    itrftpdef  - Define ITRF transformation parameters 
    etrftpdef  - Define ETRF transformation parameters 
@@ -31,12 +31,12 @@ Support functions:
    dijkstra   - Find shortest path in a graph using Dijkstra's algorithm
    trafo3d    - 3D similarity transformation with 7 or 14 parameters
 
- Demo/test functions:
+ # Demo/test functions:
 
    testitrf   - Test itrf2itrf using actual ITRF coordinates
    testpmm    - Test Plate Model Motion (PMM) functions
  
-Notes:
+# Notes:
 
    (1) itrf2itrf supports also transformations between ITRFyy and ETRF2000, 
        ETRF2014 and ETRF2020.
