@@ -1,14 +1,17 @@
-International Terrestrial Reference Frame (ITRF) Matlab Toolbox.
-Version 1.2 (26 May 2025).
+International Terrestrial Reference Frame (ITRF) Matlab Toolbox
+===============================================================
+
+**Version 1.2 (26 May 2025).**
  
 Coordinate transformations between different ITRS and ETRS89 realizations.
- 
+--------------------------------------------------------------------------
+
 Synopsis:
  
    crdvelout=itrf2itrf(crdvelin,from,to,yearin,yearout) 
    crdout=itrf2itrf(crdin,from,to,yearin) 
 
-Main function:
+Main functions:
  
    itrf2itrf  - Transform coordinates/velocities between various ITRF's and
                 ETRF2000, ETRF2014 and ETRF2020.
