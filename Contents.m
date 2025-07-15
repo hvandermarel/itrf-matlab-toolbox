@@ -8,11 +8,12 @@
 %   crdvelout=itrf2itrf(crdvelin,from,to,yearin,yearout) 
 %   crdout=itrf2itrf(crdin,from,to,yearin) 
 %
-% Main function:
+% Main functions:
 % 
 %   itrf2itrf  - Transform coordinates/velocities between various ITRF's and
 %                ETRF2000, ETRF2014 and ETRF2020.
 %   pmmvel     - Get velocity from Plate Motion Model parameters.
+%   itrfmap    - Plot map of velocity and coordinate changes between ITRF/ETRF.
 %
 % Other functions:
 %
@@ -28,8 +29,10 @@
 %   dijkstra   - Find shortest path in a graph using Dijkstra's algorithm
 %   trafo3d    - 3D similarity transformation with 7 or 14 parameters
 %
-% Demo/test functions:
+% Demo/test scripts:
 %
+%   demoitrfmap- Demo with itrfmap mapping velocity/coordinate changes
+%   liveitrfmap- Live editor (*.mlx) itrfmap analysis tool
 %   testitrf   - Test itrf2itrf using actual ITRF coordinates
 %   testpmm    - Test Plate Model Motion (PMM) functions
 % 
@@ -79,13 +82,5 @@
 %   crdvelout=itrf2itrf(  ...
 %      [3924687.552  301132.856  5001910.904 -.0150 .0164 .0070], ...
 %      'ITRF2000','ETRF2000',1997.0,1989.0)
-%
-% The Matlab functions in this package are free software: you can redistribute 
-% it and/or modify it under the terms of the GNU General Public License as 
-% published by the Free Software Foundation <http://www.gnu.org/licenses/>.
-%
-% This software is distributed in the hope that it will be useful, but WITHOUT 
-% ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS 
-% FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 %
 % (c) Hans van der Marel, Delft University of Technology, 2012-2025.

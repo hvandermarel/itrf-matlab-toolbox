@@ -6,25 +6,34 @@ International Terrestrial Reference Frame (ITRF) Matlab Toolbox
 Coordinate transformations between different ITRS and ETRS89 realizations.
 --------------------------------------------------------------------------
 
-## Synopsis:
+## Synopsis
+
+Coordinate and velocity transformations between International and European Terrestrial Reference 
+Frame (ITRF/ETRF) realizations, plate motion models (PMM) and analysis of velocity and coordinate 
+changes between reference frames.
  
-    crdvelout=itrf2itrf(crdvelin,from,to,yearin,yearout)   
-    crdout=itrf2itrf(crdin,from,to,yearin)  
+> crdvelout=itrf2itrf(crdvelin,from,to,yearin,yearout)  
+> crdout=itrf2itrf(crdin,from,to,yearin)  
+
+> demoitrfmap  
+
+![itrfmap_example](./itrfmap_example.png)
 
 ## Functions
 
-**Main functions:**
+**Main functions**
  
     itrf2itrf  - Transform coordinates/velocities between various ITRF's and ETRF2000, ETRF2014 and ETRF2020.  
     pmmvel     - Get velocity from Plate Motion Model parameters.  
+    itrfmap    - Plot map of velocity and coordinate changes between ITRF/ETRF.  
 
-**Other functions:**
+**Other functions**
 
     itrftp     - Get ITRF transformation parameters at a certain epoch  
     itrftables - Print table with transformation parameters between ITRF's.    
     itrf2etrf  - Transform coordinates/velocities between ITRFyy and ETRFyy.  
  
-**Support functions:**
+**Support functions**
 
     itrftpdef  - Define ITRF transformation parameters   
     etrftpdef  - Define ETRF transformation parameters   
@@ -32,12 +41,14 @@ Coordinate transformations between different ITRS and ETRS89 realizations.
     dijkstra   - Find shortest path in a graph using Dijkstra's algorithm  
     trafo3d    - 3D similarity transformation with 7 or 14 parameters  
 
-**Demo/test functions:**
+**Demo/test scripts**
 
+    demoitrfmap- Demo with itrfmap mapping velocity/coordinate changes  
+    liveitrfmap- Live editor (.mlx) itrfmap analysis tool  
     testitrf   - Test itrf2itrf using actual ITRF coordinates  
     testpmm    - Test Plate Model Motion (PMM) functions  
  
-## Notes:
+## Notes
 
 (1) itrf2itrf supports also transformations between ITRFyy and ETRF2000, ETRF2014 and ETRF2020.  
 
@@ -64,7 +75,7 @@ To preform transformations between legacy ETRF split the transform in two steps,
 
 (3) Dijkstra's algorithm to find the shortest path is used to construct all possible combinations of transformations.  
 
-## Examples:
+## Examples
  
     crdvelout=itrf2itrf(  ...  
       [  3899225.258   396731.815  5015078.341    -.0130    .0158    .0092 ; ...  
@@ -80,10 +91,17 @@ To preform transformations between legacy ETRF split the transform in two steps,
       [3924687.552  301132.856  5001910.904 -.0150 .0164 .0070], ...  
       'ITRF2000','ETRF2000',1997.0,1989.0)  
 
-The Matlab functions in this package are free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as 
-published by the Free Software Foundation <http://www.gnu.org/licenses/>.
+## License notice
 
-This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS 
-FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+The following notice applies to all Matlab functions and scripts in this repository.
 
-(c) Hans van der Marel, Delft University of Technology, 2012-2025.
+Copyright 2012-2025 Hans van der Marel, Delft University of Technology.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 .
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
