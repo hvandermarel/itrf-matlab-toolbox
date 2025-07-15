@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "van der Marel"
+  given-names: "Hans"
+  orcid: "https://orcid.org/0000-0002-0678-8068"
+title: "International Terrestrial Reference Frame (ITRF) Matlab Toolbox."
+version: 1.2
+doi: 10.4121/d76e9cc4-5c38-4161-be4c-7351574b4387
+date-released: 2025-07-07
+url: "https://github.com/hvandermarel/itrf-matlab-toolbox"
