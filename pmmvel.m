@@ -14,6 +14,8 @@ function vel=pmmvel(pmm,tecplate,plh,varargin)
 %   VEL=PMMVEL(PMM,TECPLATE,PLH,'option',value,...) uses options 
 %  
 %      'APPLYORB'  boolean   apply the origin rotation bias (default true)
+%      'SPHERICAL' boolean   use spherical coordinates instead of geodetic
+%                            in internal computation (default false)
 %      'ZEROVERT'  boolean   set vertical velocity to zero (default true)
 %
 %   Examples:
@@ -31,11 +33,13 @@ function vel=pmmvel(pmm,tecplate,plh,varargin)
 
 a=6378137.;
 f=1/298.257222101; 
+Re=6371000;
 
 % Process options
 
 opt.applyorb=true;
 opt.zerovert=true;
+opt.spherical=false;
 for k=1:2:numel(varargin)
     if isfield(opt,lower(varargin{k}))
        opt.(lower(varargin{k}))=varargin{k+1};
@@ -51,13 +55,18 @@ if ~opt.applyorb
    orb = [0 0 0];
 end
 
-% Comopute Cartesian coordinates 
+% Compute Cartesian coordinates 
 
-e2 = 2*f - f^2;
-N = a ./ sqrt(1 - e2 .* sin(plh(:,1)).^2);
-xyz = [ (N+plh(:,3)).*cos(plh(:,1)).*cos(plh(:,2)) ...
-        (N+plh(:,3)).*cos(plh(:,1)).*sin(plh(:,2)) ...
-        (N-e2.*N+plh(:,3)).*sin(plh(:,1))          ];
+n= [ cos(plh(:,1)).*cos(plh(:,2)) cos(plh(:,1)).*sin(plh(:,2))  sin(plh(:,1)) ];
+if opt.spherical
+    xyz = Re.*n;
+else
+    e2 = 2*f - f^2;
+    N = a ./ sqrt(1 - e2 .* sin(plh(:,1)).^2);
+    xyz = [ (N+plh(:,3)).*n(:,1) ...
+            (N+plh(:,3)).*n(:,2) ...
+            (N-e2.*N+plh(:,3)).*n(:,3) ];
+end
 
 % Compute the velocity vector
 
@@ -71,7 +80,6 @@ velxyz = xyz*Rdot' + repmat(orb/1000, [size(xyz,1) 1]);
 %         ( -n(:,2).*xyz(:,1) + n(:,1).*xyz(:,2) ) ./  cphi                              ...
 %            n(:,1).*xyz(:,1) + n(:,2).*xyz(:,2) + n(:,3).*xyz(:,3) ]
 
-n= [ cos(plh(:,1)).*cos(plh(:,2)) cos(plh(:,1)).*sin(plh(:,2))  sin(plh(:,1)) ];
 cphi= sqrt(1-n(:,3).^2);
 ip=n(:,1).*velxyz(:,1) + n(:,2).*velxyz(:,2) + n(:,3).*velxyz(:,3);
 vel = [ (  ip .* -n(:,3)  + velxyz(:,3) ) ./ cphi               ...
